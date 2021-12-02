@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dragons>
+    <dragon id="8">
+        <name>dragon1</name>
+        <coordinates>
+            <coordinateX>100</coordinateX>
+            <coordinateY>-213.0</coordinateY>
+        </coordinates>
+        <creationDate>2021-12-02</creationDate>
+        <age>null</age>
+        <color>RED</color>
+        <type>null</type>
+        <character>null</character>
+        <cave>
+            <depth>1.0</depth>
+            <numberOfTreasures>1.0</numberOfTreasures>
+        </cave>
+    </dragon>
+
+</dragons>
