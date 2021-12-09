@@ -7,10 +7,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.text.CollationElementIterator;
 
 public class FileWorker {
@@ -33,23 +30,26 @@ public class FileWorker {
     public void fromXmlToObject() {
 
         try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
             JAXBContext jaxbContext = JAXBContext.newInstance(CollectionManager.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            CollectionManager collectionManager1 = (CollectionManager) unmarshaller.unmarshal(new File(filepath));
-            for (Dragon val : collectionManager1.getDragons()){
+            CollectionManager collectionManager1 = (CollectionManager) unmarshaller.unmarshal(bufferedReader);
+            for (Dragon val : collectionManager1.getDragons()) {
                 if (collectionValidator.validateId(val) && collectionValidator.validateCoordinates(val) && collectionValidator.validateAge(val) && collectionValidator.validateDate(val)
-                && collectionValidator.validateCave(val) && collectionValidator.validateColor(val)){
-                        collectionValidator.isThatIdContainsInCollection(val);
-                        this.collectionManager.insert(val);
+                        && collectionValidator.validateCave(val) && collectionValidator.validateColor(val)) {
+                    collectionValidator.isThatIdContainsInCollection(val);
+                    this.collectionManager.insert(val);
 
-                }
-                else System.out.println("Из XML-файла элемент с именем: " + val.getName()+ " не добавлен в коллекцию!");
+                } else
+                    System.out.println("Из XML-файла элемент с именем: " + val.getName() + " не добавлен в коллекцию!");
             }
 
         } catch (JAXBException e) {
             System.out.println(e.getMessage());
-        } catch (NullPointerException e2){
+        } catch (NullPointerException e2) {
             System.err.println("Не удается найти файл!");
+        } catch (FileNotFoundException e3) {
+            System.out.println(e3.getMessage());
         }
     }
 
@@ -62,7 +62,7 @@ public class FileWorker {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(collectionManager, outputStream);
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("Такой файл не найден!");
         } catch (JAXBException e2) {
             System.out.println(e2.getMessage());
