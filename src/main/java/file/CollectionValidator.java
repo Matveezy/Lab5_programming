@@ -1,9 +1,7 @@
 package file;
 
-import Collection.CollectionManager;
-import Collection.Dragon;
-
-import javax.xml.stream.events.DTD;
+import collectionWorker.CollectionManager;
+import collection.Dragon;
 
 public class CollectionValidator {
     private CollectionManager collectionManager;

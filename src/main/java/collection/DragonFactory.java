@@ -1,19 +1,29 @@
-package file;
+package collection;
 
-import collection.*;
 import userIO.UserIO;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
-public class DragonFieldsReader {
-    private UserIO userIO;
+public class DragonFactory {
+    private long id =1;
+    Scanner scanner= new Scanner(System.in);
+    private UserIO userIO =new UserIO(scanner);
 
-    public DragonFieldsReader(UserIO userIO) {
-        this.userIO = userIO;
+    public Dragon createDragon(){
+        return new Dragon(getId(),readName(),readCoordinates(), LocalDate.now(), readAge(), readColor(), readDragonType(), readDragonCharacter(), readDragonCave());
     }
 
-    public Dragon read(Integer id) {
-        return new Dragon(id, readName(), readCoordinates(), LocalDate.now(), readAge(), readColor(), readDragonType(), readDragonCharacter(), readDragonCave());
+    public Dragon createDragonWithNoArgs(){
+        return new Dragon(getId());
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    private long getId(){
+        return id++;
     }
 
     public String readName() {
@@ -23,6 +33,11 @@ public class DragonFieldsReader {
             str = userIO.getLine();
             if (str.trim().equals("")) {
                 userIO.printErrorText("Имя не может быть пустой строкой!\n");
+                continue;
+            }
+            if (str.trim().equals("null")){
+                userIO.printErrorText("Поле name не может быть null!\n");
+                continue;
             }
             return str;
         }
@@ -45,7 +60,7 @@ public class DragonFieldsReader {
                 x = Integer.parseInt(str.trim());
                 return x;
             } catch (NumberFormatException e) {
-                userIO.printErrorText("Координата не можеть быть задана не числом!");
+                userIO.printErrorText("Координата не можеть быть задана не числом!\n");
             }
         }
     }
@@ -78,10 +93,14 @@ public class DragonFieldsReader {
 
         while (true) {
             try {
-                userIO.printCommandText("Введите возраст вашего дракона (Должно быть больше нуля! Может быть null!) :\n");
+                userIO.printCommandText("Введите возраст вашего дракона (должен быть больше нуля, может быть равен null) :\n");
                 String str = userIO.getLine();
                 if (str.trim().equals("")) {
                     userIO.printErrorText("Возраст не может быть задана пустой строкой!\n");
+                }
+                if (str.trim().equals("null")) {
+                    age=null;
+                    return age;
                 }
                 age = Integer.parseInt(str.trim());
                 if (age <= 0) {
@@ -89,9 +108,9 @@ public class DragonFieldsReader {
                 }
                 return age;
             } catch (NumberFormatException e) {
-                userIO.printErrorText("Возраст не можеть быть задан не числом!");
+                userIO.printErrorText("Возраст не можеть быть задан не числом!\n");
             } catch (IllegalArgumentException e2){
-                userIO.printErrorText("Возраст не можеть быть задан числом меньше нуля!");
+                userIO.printErrorText("Возраст не можеть быть задан числом меньше нуля!\n");
             }
         }
     }
@@ -99,7 +118,7 @@ public class DragonFieldsReader {
 
     public Color readColor() {
         Color color;
-        userIO.printCommandText("Выберите цвет из данного списка :\n");
+        userIO.printCommandText("Выберите цвет из данного списка (не можеть быть null) :\n");
         for (Color colors : Color.values()) {
             System.out.println(colors.name());
         }
@@ -110,51 +129,51 @@ public class DragonFieldsReader {
                 color = Color.valueOf(userIO.getLine().trim().toUpperCase());
                 return color;
             } catch (IllegalArgumentException e) {
-                System.err.println("Значение введенной константы не представлено в перечислении Color");
+                userIO.printErrorText("Значение введенной константы не представлено в перечислении Color\n");
             }
         }
     }
 
     public DragonType readDragonType() {
         DragonType dragonType;
-        userIO.printCommandText("Все возможные типы драконов:\n");
+        userIO.printCommandText("Все возможные типы драконов:(может быть null)\n");
         for (DragonType val : DragonType.values()) {
             System.out.println(val.name());
         }
         while (true) {
             try {
                 userIO.printCommandText("Выберите тип вашего дракона:\n");
-                String userInput = userIO.getLine().trim();
-                if (userInput.equals("null")) {
+                String input = userIO.getLine().trim();
+                if (input.equals("null")){
                     dragonType=null;
                     return dragonType;
                 }
-                dragonType = DragonType.valueOf(userInput.toUpperCase());
+                dragonType = DragonType.valueOf(input.toUpperCase());
                 return dragonType;
             } catch (IllegalArgumentException e) {
-                System.err.println("Значение введенной константы не представлено в перечислении DragonType");
+                userIO.printErrorText("Значение введенной константы не представлено в перечислении DragonType\n");
             }
         }
     }
 
     public DragonCharacter readDragonCharacter() {
         DragonCharacter dragonCharacter;
-        userIO.printCommandText("Все возможные типы характеров дракона :\n");
+        userIO.printCommandText("Все возможные типы характеров драконов(может быть null) :\n");
         for (DragonCharacter val : DragonCharacter.values()) {
             System.out.println(val.name());
         }
         while (true) {
             try {
                 userIO.printCommandText("Выберите характер вашего дракона :\n");
-                String userInput = userIO.getLine().trim();
-                if (userInput.equals("null")){
+                String input = userIO.getLine().trim();
+                if (input.equals("null")){
                     dragonCharacter=null;
                     return dragonCharacter;
                 }
-                dragonCharacter = DragonCharacter.valueOf(userIO.getLine().trim().toUpperCase());
+                dragonCharacter = DragonCharacter.valueOf(input.toUpperCase());
                 return dragonCharacter;
             } catch (IllegalArgumentException e) {
-                userIO.printErrorText("Значение введенной константы не представлено в перечислении DragonCharacter");
+                userIO.printErrorText("Значение введенной константы не представлено в перечислении DragonCharacter\n");
             }
         }
     }
@@ -170,29 +189,33 @@ public class DragonFieldsReader {
             try {
                 String str = userIO.getLine();
                 if (str.trim().equals("")) {
-                    userIO.printErrorText("Глубина пещеры не может быть пустой строкой!");
+                    userIO.printErrorText("Глубина пещеры не может быть пустой строкой!\n");
                 }
                 depth = Float.parseFloat(str.trim());
                 return depth;
             } catch (NumberFormatException e) {
-                userIO.printErrorText("Глубина пещеры не можеть быть задана не числом!");
+                userIO.printErrorText("Глубина пещеры не можеть быть задана не числом!\n");
             }
         }
     }
 
     public Float readNumberOfTreasures() {
         Float numberOfTreasures;
-        userIO.printCommandText("Введите количество сокровищ :\n");
+        userIO.printCommandText("Введите количество сокровищ (не можеть быть null и должно быть больше 0) :\n");
         while (true) {
             try {
                 String str = userIO.getLine();
                 if (str.trim().equals("")) {
-                    userIO.printErrorText("Количество сокровищ не может быть пустой строкой!");
+                    System.err.println("Количество сокровищ не может быть пустой строкой!");
                 }
                 numberOfTreasures = Float.parseFloat(str.trim());
+                if (numberOfTreasures<=0){
+                    System.err.println("Количество сокровищ должно быть больше нуля!");
+                    continue;
+                }
                 return numberOfTreasures;
             } catch (NumberFormatException e) {
-                userIO.printErrorText("Количество не можеть быть задано не числом!");
+                System.out.println("Количество не можеть быть задано не числом!");
             }
         }
     }

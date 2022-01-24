@@ -1,14 +1,13 @@
 package file;
 
-import Collection.CollectionManager;
-import Collection.Dragon;
+import collectionWorker.CollectionManager;
+import collection.Dragon;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
-import java.text.CollationElementIterator;
 
 public class FileWorker {
     private CollectionValidator collectionValidator;

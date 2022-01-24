@@ -1,9 +1,8 @@
 package run;
 
-import Collection.CollectionManager;
-import Commands.CommandInvoker;
-import Interfaces.Command;
-import UserIO.UserIO;
+import collectionWorker.CollectionManager;
+import commands.CommandInvoker;
+import userIO.UserIO;
 import file.DragonFieldsReader;
 import file.FileWorker;
 
