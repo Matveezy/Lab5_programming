@@ -1,24 +1,27 @@
 package file;
 
+import collection.DragonFactory;
 import collectionWorker.CollectionManager;
 import collection.Dragon;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
+import java.time.LocalDate;
 
 public class FileWorker {
     private CollectionValidator collectionValidator;
     private CollectionManager collectionManager;
+
     private String filepath = System.getenv("FILE_PATH");
-//      private String filepath = "/Users/matthew/IdeaProjects/Lab5/src/main/java/run/file.xml";
 
+    private DragonFactory dragonFactory;
 
-    public FileWorker(CollectionManager collectionManager) {
+    public FileWorker(CollectionManager collectionManager,DragonFactory dragonFactory) {
         this.collectionManager = collectionManager;
         collectionValidator = new CollectionValidator(collectionManager);
+        this.dragonFactory = dragonFactory;
     }
 
 
@@ -42,7 +45,7 @@ public class FileWorker {
                 } else
                     System.out.println("Из XML-файла элемент с именем: " + val.getName() + " не добавлен в коллекцию!");
             }
-
+                dragonFactory.setId(dragonFactory.getFirstFreeId(collectionManager));
         } catch (JAXBException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e2) {

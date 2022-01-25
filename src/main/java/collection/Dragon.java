@@ -2,6 +2,7 @@ package collection;
 
 import file.LocalDateAdapter;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
@@ -66,7 +67,7 @@ public class Dragon implements Comparable<Dragon> {
 
     }
 
-    public Dragon(long id){
+    public Dragon(long id) {
         this.id = id;
     }
 

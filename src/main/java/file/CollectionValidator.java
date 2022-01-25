@@ -68,7 +68,7 @@ public class CollectionValidator {
             Integer month = Integer.parseInt(parseDate[1]);
             Integer day = Integer.parseInt(parseDate[2]);
 
-            if (year <= 0 || year > 2021) {
+            if (year <= 0 || year > 2022) {
                 System.out.println("Некорректно указан год!");
                 return false;
             }

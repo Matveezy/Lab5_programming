@@ -17,13 +17,6 @@ public class Coordinates {
     public Coordinates() {
     }
 
-    public Coordinates(Integer x) {
-        this.x = x;
-    }
-
-    public Coordinates(Double y) {
-        this.y = y;
-    }
 
     @XmlElement(name = "coordinateX")
     public void setX(Integer x) {

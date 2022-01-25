@@ -19,9 +19,9 @@ public class Application {
 
     public void start(String inputFile) {
         collectionManager = new CollectionManager();
-        fileWorker = new FileWorker(collectionManager);
+        fileWorker = new FileWorker(collectionManager , collectionManager.getDragonFactory());
         userIO = new UserIO();
-        dragonFieldsReader = new DragonFieldsReader(userIO);
+//        dragonFieldsReader = new DragonFieldsReader(userIO);
         this.commandInvoker = new CommandInvoker(collectionManager, userIO, inputFile, dragonFieldsReader);
 
         try {

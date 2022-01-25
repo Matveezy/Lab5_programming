@@ -15,7 +15,6 @@ public class CollectionManager {
     private DragonFactory dragonFactory;
     private LocalDate creationCollectionDate;
 
-    private Dragon minDragon;
 
 
     public CollectionManager() {
@@ -122,7 +121,7 @@ public class CollectionManager {
         for (Dragon val : dragons) {
             if (val.getId() == id) {
                 dragons.remove(val);
-                dragonFactory.setId(id);
+                dragonFactory.setId(dragonFactory.getFirstFreeId(this));
                 return true;
             }
         }
@@ -137,7 +136,7 @@ public class CollectionManager {
 
 
     public void save() {
-        FileWorker fileWorker = new FileWorker(this);
+        FileWorker fileWorker = new FileWorker(this  , this.getDragonFactory());
         fileWorker.saveToXml();
     }
 
@@ -152,11 +151,6 @@ public class CollectionManager {
         dragons = list;
     }
 
-    public String getFieldsName() {
-        return "Список всех полей:\nname(String)\ncoordinate_x(Integer)\ncoordinate_y(Double)\nage(Integer)" +
-                "\ncolor: " + Arrays.toString(Color.values()) + "\ntype: " + Arrays.toString(DragonType.values()) +
-                "\ncharacter: " + Arrays.toString(DragonCharacter.values()) + "\ncave_depth(Float)\ncave_number_of_treasures(Float)\n";
-    }
 
     public DragonFactory getDragonFactory() {
         return dragonFactory;
@@ -178,16 +172,13 @@ public class CollectionManager {
         return creationCollectionDate;
     }
 
-    public void setCreationCollectionDate(LocalDate creationCollectionDate) {
-        this.creationCollectionDate = creationCollectionDate;
-    }
 
     /**
      * Вспомогательные методы с более сложной логикой
      */
 
     public Dragon findMinDragon() {
-        minDragon = dragons.get(0);
+        Dragon minDragon = dragons.get(0);
         for (Dragon vals : dragons) {
             if (vals.compareTo(minDragon) > 0) minDragon = vals;
         }
