@@ -3,10 +3,11 @@ package commands;
 import collectionWorker.CollectionManager;
 import collection.Dragon;
 import Interfaces.Command;
+import utils.DateParser;
 
 public class MaxByCreationDate implements Command {
     private CollectionManager collectionManager;
-
+    private DateParser dateParser = new DateParser();
     public MaxByCreationDate(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
@@ -32,28 +33,29 @@ public class MaxByCreationDate implements Command {
      * @return
      */
     private Dragon findDragonWithMaxCreationDay(CollectionManager collectionManager) {
-        Integer maxYear = getYear(collectionManager.getDragons().get(0));
-        Integer maxMonth = getMonth(collectionManager.getDragons().get(0));
-        Integer maxDay = getDay(collectionManager.getDragons().get(0));
+        Dragon firstDragon = collectionManager.getDragons().get(0);
+        Integer maxYear = dateParser.getYear(firstDragon);
+        Integer maxMonth = dateParser.getMonth(firstDragon);
+        Integer maxDay = dateParser.getDay(firstDragon);
         Dragon dragon = collectionManager.getDragons().get(0);
         for (Dragon val : collectionManager.getDragons()) {
-            if (maxYear < getYear(val)) {
-                maxYear = getYear(val);
+            if (maxYear < dateParser.getYear(val)) {
+                maxYear = dateParser.getYear(val);
                 dragon = val;
                 continue;
-            } else if (maxYear > getYear(val)) continue;
-            else if (maxYear == getYear(val)) {
-                if (maxMonth < getMonth(val)) {
-                    maxMonth = getMonth(val);
+            } else if (maxYear > dateParser.getYear(val)) continue;
+            else if (maxYear == dateParser.getYear(val)) {
+                if (maxMonth < dateParser.getMonth(val)) {
+                    maxMonth = dateParser.getMonth(val);
                     dragon = val;
                     continue;
-                } else if (maxMonth > getMonth(val)) continue;
-                else if (maxMonth == getMonth(val)) {
-                    if (maxDay < getDay(val)) {
-                        maxDay = getDay(val);
+                } else if (maxMonth > dateParser.getMonth(val)) continue;
+                else if (maxMonth == dateParser.getMonth(val)) {
+                    if (maxDay < dateParser.getDay(val)) {
+                        maxDay = dateParser.getDay(val);
                         dragon = val;
                         continue;
-                    } else if (maxDay > getDay(val)) continue;
+                    } else if (maxDay > dateParser.getDay(val)) continue;
                     ;
                 }
             }
@@ -61,23 +63,6 @@ public class MaxByCreationDate implements Command {
         return dragon;
     }
 
-    private int getYear(Dragon dragon) {
-        String date = dragon.getCreationDate().toString();
-        String year = date.split("-")[0];
-        return Integer.parseInt(year);
-    }
-
-    private int getMonth(Dragon dragon) {
-        String date = dragon.getCreationDate().toString();
-        String month = date.split("-")[1];
-        return Integer.parseInt(month);
-    }
-
-    private int getDay(Dragon dragon) {
-        String date = dragon.getCreationDate().toString();
-        String day = date.split("-")[2];
-        return Integer.parseInt(day);
-    }
 
     @Override
     public String getDescription() {
