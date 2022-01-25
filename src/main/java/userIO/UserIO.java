@@ -27,5 +27,8 @@ public class UserIO {
         System.err.print(err);
     }
 
+    public String[] parseStringWithSpaces (String str){
+        return str.trim().split("\\s+");
+    }
 
 }

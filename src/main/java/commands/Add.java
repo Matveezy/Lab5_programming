@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Add implements Command {
 
     private CollectionManager collectionManager;
-    private UserIO userIO;
 
     @Override
     public void execute() {
@@ -20,10 +19,6 @@ public class Add implements Command {
         this.collectionManager = collectionManager;
     }
 
-    private UserIO createIO() {
-        userIO = new UserIO(new Scanner(System.in));
-        return userIO;
-    }
 
     @Override
     public String getDescription() {

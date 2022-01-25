@@ -4,7 +4,7 @@ import collectionWorker.CollectionManager;
 import Interfaces.Command;
 import Interfaces.CommandWithArguments;
 import userIO.UserIO;
-import file.DragonFieldsReader;
+import utils.DragonFieldsReader;
 
 import java.util.Arrays;
 import java.util.HashMap;

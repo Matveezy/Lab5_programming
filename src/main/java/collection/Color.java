@@ -7,14 +7,13 @@ public enum Color {
     ORANGE("orange"),
     BROWN("brown");
 
-    String color;
-
+    private String color;
 
     Color(String color) {
         this.color = color;
     }
 
-    public String getColor(){
+    public String getColor() {
         return color;
     }
 

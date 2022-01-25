@@ -10,22 +10,17 @@ public class CollectionValidator {
         this.collectionManager = collectionManager;
     }
 
-//    public void validateCollection(CollectionManager collectionFromXml){
-//        if (validateId(collectionFromXml)) System.out.println("Элемент добавлен в коллекцию");
-//        else System.out.println("Элемент не добавлен в коллекцию");
-//    }
-
-    public boolean validateId(Dragon dragon){
-        if (dragon.getId()<=0) {
+    public boolean validateId(Dragon dragon) {
+        if (dragon.getId() <= 0) {
             System.out.println("Id не может быть меньше или равно нулю!");
             return false;
         }
         return true;
     }
 
-    public boolean validateCoordinates(Dragon dragon){
+    public boolean validateCoordinates(Dragon dragon) {
         try {
-            if (dragon.getCoordinates().getX().equals("null")){
+            if (dragon.getCoordinates().getX().equals("null")) {
                 System.out.println("Поле coordinate_x не может быть null!");
                 return false;
             }
@@ -36,20 +31,20 @@ public class CollectionValidator {
                 System.out.println("Поле coordinate_y должно быть меньше -212!");
                 return false;
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Некорректно задано поле coordinate!");
             return false;
         }
         return true;
     }
 
-    public boolean validateAge(Dragon dragon){
+    public boolean validateAge(Dragon dragon) {
         try {
             if (dragon.getAge() <= 0) {
                 System.out.println("Значение age должно быть больше или равно нуля!");
                 return false;
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             dragon.setAge(null);
             return true;
         }
@@ -88,29 +83,30 @@ public class CollectionValidator {
         return true;
     }
 
-    public boolean validateCave(Dragon dragon){
+    public boolean validateCave(Dragon dragon) {
         try {
             if (dragon.getCave().getNumberOfTreasures() <= 0) {
                 System.out.println("Значение number_of_treasure должно быть больше нуля!");
                 return false;
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Значение number_of_treasure должно быть больше нуля!");
             return false;
         }
         return true;
     }
 
-    public boolean validateColor(Dragon dragon){
-        if (dragon.getColor()==null) {
+    public boolean validateColor(Dragon dragon) {
+        if (dragon.getColor() == null) {
             System.out.println("Color не можеть быть задан null!");
             return false;
         }
         return true;
     }
-    public boolean isThatIdContainsInCollection(Dragon dragon){
-        for (Dragon val : collectionManager.getDragons()){
-            if (val.getId()==dragon.getId()){
+
+    public boolean isThatIdContainsInCollection(Dragon dragon) {
+        for (Dragon val : collectionManager.getDragons()) {
+            if (val.getId() == dragon.getId()) {
                 collectionManager.removeById(val.getId());
                 return true;
             }

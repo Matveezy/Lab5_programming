@@ -3,8 +3,8 @@ package run;
 import collectionWorker.CollectionManager;
 import commands.CommandInvoker;
 import userIO.UserIO;
-import file.DragonFieldsReader;
 import file.FileWorker;
+import utils.DragonFieldsReader;
 
 import java.io.File;
 import java.io.IOException;

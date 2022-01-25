@@ -4,7 +4,7 @@ import collectionWorker.CollectionManager;
 import exceptions.RecoursiveException;
 import Interfaces.CommandWithArguments;
 import userIO.UserIO;
-import file.DragonFieldsReader;
+import utils.DragonFieldsReader;
 
 import java.io.*;
 import java.util.ArrayList;
