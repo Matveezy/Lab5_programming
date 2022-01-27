@@ -4,7 +4,7 @@ import collection.Color;
 import collection.Dragon;
 import collection.DragonCharacter;
 import collection.DragonType;
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 
 import java.util.Arrays;
 

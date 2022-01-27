@@ -1,7 +1,7 @@
 package utils;
 
 import collection.*;
-import userIO.UserIO;
+import userio.UserIO;
 
 import java.util.Scanner;
 

@@ -1,10 +1,7 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import Interfaces.Command;
-import userIO.UserIO;
-
-import java.util.Scanner;
 
 public class Add implements Command {
 

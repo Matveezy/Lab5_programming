@@ -1,8 +1,8 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import Interfaces.CommandWithArguments;
-import userIO.UserIO;
+import userio.UserIO;
 import utils.CollectionInfo;
 
 public class Update implements CommandWithArguments {

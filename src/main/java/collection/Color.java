@@ -6,7 +6,6 @@ public enum Color {
     BLUE("blue"),
     ORANGE("orange"),
     BROWN("brown");
-
     private String color;
 
     Color(String color) {

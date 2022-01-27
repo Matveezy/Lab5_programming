@@ -1,4 +1,4 @@
-package userIO;
+package userio;
 
 import java.util.Scanner;
 

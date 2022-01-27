@@ -1,6 +1,6 @@
 package file;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import collection.Dragon;
 
 public class CollectionValidator {

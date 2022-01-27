@@ -1,4 +1,4 @@
-package collectionWorker;
+package collectionworker;
 
 import collection.*;
 import file.FileWorker;
@@ -209,16 +209,14 @@ public class CollectionManager {
     }
 
     public Dragon getElementById(long id) {
-        try {
-            if (id < 1) throw new IllegalArgumentException();
+            if (id < 1) {
+                System.err.println("Введите корректный id!");
+            }
             for (Dragon vals : dragons) {
                 if (vals.getId() == id) {
                     return vals;
                 }
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Введите корректный id!");
-        }
         return null;
     }
 }

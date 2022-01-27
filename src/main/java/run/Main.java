@@ -7,13 +7,9 @@ public class Main {
             Application application = new Application();
             application.start(inputFile);
 
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.err.println("Укажите переменную окружения FILE_PATH!");
         }
-
-//    System.out.println(inputFile);
-
-
     }
 }
 

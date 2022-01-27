@@ -1,6 +1,6 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import collection.Dragon;
 import Interfaces.Command;
 

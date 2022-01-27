@@ -1,6 +1,6 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import Interfaces.Command;
 import utils.CollectionInfo;
 

@@ -1,6 +1,6 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import Interfaces.Command;
 
 public class Clear implements Command {

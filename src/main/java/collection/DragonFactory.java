@@ -1,7 +1,7 @@
 package collection;
 
-import collectionWorker.CollectionManager;
-import userIO.UserIO;
+import collectionworker.CollectionManager;
+import userio.UserIO;
 import utils.DragonFieldsReader;
 
 import java.time.LocalDate;

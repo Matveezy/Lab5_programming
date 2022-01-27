@@ -1,9 +1,9 @@
 package commands;
 
-import collectionWorker.CollectionManager;
+import collectionworker.CollectionManager;
 import Interfaces.Command;
 import Interfaces.CommandWithArguments;
-import userIO.UserIO;
+import userio.UserIO;
 import utils.DragonFieldsReader;
 
 import java.util.Arrays;
