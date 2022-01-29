@@ -26,9 +26,6 @@ public class PrintFieldDescendingType implements Command {
     public String getDescription() {
         return "Вывести значения поля type всех элементов в порядке убывания";
     }
-
-
-
 }
 
 
