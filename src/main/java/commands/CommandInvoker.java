@@ -1,8 +1,8 @@
 package commands;
 
 import collectionworker.CollectionManager;
-import Interfaces.Command;
-import Interfaces.CommandWithArguments;
+import interfaces.Command;
+import interfaces.CommandWithArguments;
 import userio.UserIO;
 import utils.DragonFieldsReader;
 

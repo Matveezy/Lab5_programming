@@ -1,7 +1,7 @@
 package commands;
 
-import Interfaces.Command;
-import Interfaces.CommandWithArguments;
+import interfaces.Command;
+import interfaces.CommandWithArguments;
 
 import java.util.HashMap;
 import java.util.Map;

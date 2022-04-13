@@ -2,7 +2,7 @@ package commands;
 
 import collectionworker.CollectionManager;
 import collection.Dragon;
-import Interfaces.Command;
+import interfaces.Command;
 
 import java.util.HashSet;
 import java.util.Set;

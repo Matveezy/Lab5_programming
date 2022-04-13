@@ -2,6 +2,7 @@ package run;
 
 import collectionworker.CollectionManager;
 import commands.CommandInvoker;
+import exception.PathVariableNotExistException;
 import userio.UserIO;
 import file.FileWorker;
 import utils.DragonFieldsReader;
@@ -18,10 +19,10 @@ public class Application {
     DragonFieldsReader dragonFieldsReader;
 
     public void start(String inputFile) {
+        if (inputFile==null) throw new PathVariableNotExistException("Укажите переменную окружения FILE_PATH!");
         collectionManager = new CollectionManager();
         fileWorker = new FileWorker(collectionManager , collectionManager.getDragonFactory());
         userIO = new UserIO();
-//        dragonFieldsReader = new DragonFieldsReader(userIO);
         this.commandInvoker = new CommandInvoker(collectionManager, userIO, inputFile, dragonFieldsReader);
 
         try {

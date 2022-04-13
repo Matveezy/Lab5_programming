@@ -1,7 +1,7 @@
 package commands;
 
 import collectionworker.CollectionManager;
-import Interfaces.Command;
+import interfaces.Command;
 import utils.CollectionInfo;
 
 public class Info implements Command {

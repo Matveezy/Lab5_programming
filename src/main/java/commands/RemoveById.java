@@ -1,7 +1,7 @@
 package commands;
 
 import collectionworker.CollectionManager;
-import Interfaces.CommandWithArguments;
+import interfaces.CommandWithArguments;
 import userio.UserIO;
 
 public class RemoveById implements CommandWithArguments {

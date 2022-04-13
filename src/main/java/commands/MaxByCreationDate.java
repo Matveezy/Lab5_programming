@@ -2,7 +2,7 @@ package commands;
 
 import collectionworker.CollectionManager;
 import collection.Dragon;
-import Interfaces.Command;
+import interfaces.Command;
 import utils.DateParser;
 
 public class MaxByCreationDate implements Command {
@@ -35,10 +35,11 @@ public class MaxByCreationDate implements Command {
     private Dragon findDragonWithMaxCreationDay(CollectionManager collectionManager) {
         Dragon firstDragon = collectionManager.getDragons().get(0);
         Integer maxYear = dateParser.getYear(firstDragon);
-        Integer maxMonth = dateParser.getMonth(firstDragon);
+        Integer maxMonth = 01;
         Integer maxDay = dateParser.getDay(firstDragon);
         Dragon dragon = collectionManager.getDragons().get(0);
         for (Dragon val : collectionManager.getDragons()) {
+            if (val.getId()==firstDragon.getId()) continue;
             if (maxYear < dateParser.getYear(val)) {
                 maxYear = dateParser.getYear(val);
                 dragon = val;

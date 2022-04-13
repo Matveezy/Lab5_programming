@@ -1,7 +1,7 @@
 package commands;
 
 import collectionworker.CollectionManager;
-import Interfaces.Command;
+import interfaces.Command;
 
 public class Add implements Command {
 
